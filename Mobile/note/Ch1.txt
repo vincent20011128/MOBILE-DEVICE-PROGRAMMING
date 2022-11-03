@@ -1,0 +1,72 @@
+Ch1
+
+文字-android:text="Vincent"
+字體大小-android:textSize="30sp"
+文字背景顏色-android:background="@color/black"
+字體顏色android:textColor="@color/white"
+
+背景圖片或背景顏色要加在最上層
+背景圖片要放在\app\src\main\res\drawableb下
+android:background="@drawable/p1"
+
+更改App名稱:
+更改\app\src\main\res\values\strings內的
+<string name="app_name">欲更改名稱</string>
+
+解構:
+當strings新增其他的元素
+<resources>
+    <string name="app_name">My first App</string>
+    <string name="my_name">Hello Vincent</string>
+</resources>
+可以在actvity_main.xml內相應的帶入
+android:text="@string/my_name"
+
+更改語系除了模擬系統內的外 還要再value按右鍵選擇new->valuse resource files新增strings
+
+--------
+activity_main.xml的id->a1
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my_name"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:id="@+id/tv1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+要在主程式MainActivity.java對映在按alt+enter
+public class MainActivity extends AppCompatActivity {
+
+    TextView a1;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        a1=(TextView) findViewById(R.id.tv1);<---------------引入的
+    }
+}
+--------
+如果在strings新增文字
+<resources>
+    <string name="app_name">My first App</string>
+    <string name="my_name">Hello Vincent</string>
+    <string name="name1">Hello test</string>
+</resources>
+
+那在MainActivity內也要新增code
+public class MainActivity extends AppCompatActivity {
+
+    TextView a1;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        a1=(TextView) findViewById(R.id.tv1);
+        a1.setText(getString(R.string.name1));
+    }
+}
+
+
+
+接著要看第二周的3分56秒
